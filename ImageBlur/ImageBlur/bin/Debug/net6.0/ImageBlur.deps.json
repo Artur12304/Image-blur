@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "ImageBlur/1.0.0": {
         "dependencies": {
-          "AForge.Imaging": "2.2.5",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.0",
+          "SixLabors.ImageSharp": "2.1.3",
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.Drawing.Common": "7.0.0"
         },
@@ -17,38 +17,8 @@
           "ImageBlur.dll": {}
         }
       },
-      "AForge/2.2.5": {
-        "runtime": {
-          "lib/AForge.dll": {
-            "assemblyVersion": "2.2.5.0",
-            "fileVersion": "2.2.5.0"
-          }
-        }
-      },
-      "AForge.Imaging/2.2.5": {
-        "dependencies": {
-          "AForge": "2.2.5",
-          "AForge.Math": "2.2.5"
-        },
-        "runtime": {
-          "lib/AForge.Imaging.dll": {
-            "assemblyVersion": "2.2.5.0",
-            "fileVersion": "2.2.5.0"
-          }
-        }
-      },
-      "AForge.Math/2.2.5": {
-        "dependencies": {
-          "AForge": "2.2.5"
-        },
-        "runtime": {
-          "lib/AForge.Math.dll": {
-            "assemblyVersion": "2.2.5.0",
-            "fileVersion": "2.2.5.0"
-          }
-        }
-      },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
+      "Microsoft.NETCore.Platforms/5.0.0": {},
       "Microsoft.OpenApi/1.2.3": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
@@ -71,6 +41,18 @@
             "assetType": "runtime",
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "SixLabors.ImageSharp/2.1.3": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0",
+          "System.Text.Encoding.CodePages": "5.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.1.3.0"
           }
         }
       },
@@ -130,6 +112,12 @@
             "fileVersion": "7.0.22.51805"
           }
         }
+      },
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {},
+      "System.Text.Encoding.CodePages/5.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        }
       }
     }
   },
@@ -139,33 +127,19 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AForge/2.2.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-clkumhM9DggqIzEXAHgVLeWO4arG5YfoPr7J4jfjJx35AoeEIJSSm49J25bwp/9mXQYLwi7y1Wunc8qgYJsGxg==",
-      "path": "aforge/2.2.5",
-      "hashPath": "aforge.2.2.5.nupkg.sha512"
-    },
-    "AForge.Imaging/2.2.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-n8l7Zdsm89EFW9Uz4uCO3D428Gu4Q56YxixSMJPruen1c30R8R9Mm8AreTdoOi2XjN5id04JwFFlXYTk8pIIfw==",
-      "path": "aforge.imaging/2.2.5",
-      "hashPath": "aforge.imaging.2.2.5.nupkg.sha512"
-    },
-    "AForge.Math/2.2.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-pmT1WobVv13vMxwXhCu8sRunxjiUHyURWS0+dsW/aBPi06xiyYIdCLHI6jph9Axb4QoLIlb85eBI6zd2EAbGIg==",
-      "path": "aforge.math/2.2.5",
-      "hashPath": "aforge.math.2.2.5.nupkg.sha512"
-    },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-LH4OE/76F6sOCslif7+Xh3fS/wUUrE5ryeXAMcoCnuwOQGT5Smw0p57IgDh/pHgHaGz/e+AmEQb7pRgb++wt0w==",
       "path": "microsoft.extensions.apidescription.server/3.0.0",
       "hashPath": "microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
     },
     "Microsoft.OpenApi/1.2.3": {
       "type": "package",
@@ -187,6 +161,13 @@
       "sha512": "sha512-2nXPrhdAyAzir0gLl8Yy8S5Mnm/uBSQQA7jEsILOS1MTyS7DbmV1NgViMtvV1sfCD1ebITpNwb1NIinKeJgUVQ==",
       "path": "microsoft.win32.systemevents/7.0.0",
       "hashPath": "microsoft.win32.systemevents.7.0.0.nupkg.sha512"
+    },
+    "SixLabors.ImageSharp/2.1.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8yonNRWX3vUE9k29ta0Hbfa0AEc0hbDjSH/nZ3vOTJEXmY6hLnGsjDKoz96Z+AgOsrdkAu6PdL/Ebaf70aitzw==",
+      "path": "sixlabors.imagesharp/2.1.3",
+      "hashPath": "sixlabors.imagesharp.2.1.3.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.2.3": {
       "type": "package",
@@ -222,6 +203,20 @@
       "sha512": "sha512-KIX+oBU38pxkKPxvLcLfIkOV5Ien8ReN78wro7OF5/erwcmortzeFx+iBswlh2Vz6gVne0khocQudGwaO1Ey6A==",
       "path": "system.drawing.common/7.0.0",
       "hashPath": "system.drawing.common.7.0.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
+      "path": "system.runtime.compilerservices.unsafe/5.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    },
+    "System.Text.Encoding.CodePages/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NyscU59xX6Uo91qvhOs2Ccho3AR2TnZPomo1Z0K6YpyztBPM/A5VbkzOO19sy3A3i1TtEnTxA7bCe3Us+r5MWg==",
+      "path": "system.text.encoding.codepages/5.0.0",
+      "hashPath": "system.text.encoding.codepages.5.0.0.nupkg.sha512"
     }
   }
 }

@@ -1,6 +1,5 @@
 using ImageBlur.Services;
-using System.Drawing.Imaging;
-using System.Drawing;
+using SixLabors.ImageSharp;
 
 namespace ImageBlur.Facades
 {
@@ -33,9 +32,9 @@ namespace ImageBlur.Facades
             return await _imageService.ResizeImageAsync(image, size);
         }
 
-        public async Task SaveImageAsync(Image image, string filePath, ImageFormat format)
+        public async Task SaveImageAsync(Image image, string filePath)
         {
-            await _imageService.SaveImageAsync(image, filePath, format);
+            await _imageService.SaveImageAsync(image, filePath);
         }
     }
 }

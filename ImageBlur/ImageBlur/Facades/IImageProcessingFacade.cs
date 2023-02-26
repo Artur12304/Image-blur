@@ -1,5 +1,4 @@
-using System.Drawing.Imaging;
-using System.Drawing;
+using SixLabors.ImageSharp;
 
 namespace ImageBlur.Facades
 {
@@ -9,6 +8,6 @@ namespace ImageBlur.Facades
         Task<Image> BlurImageAsync(Image image);
         Task<Image> SharpenImageAsync(Image image);
         Task<Image> ResizeImageAsync(Image image, Size size);
-        Task SaveImageAsync(Image image, string filePath, ImageFormat format);
+        Task SaveImageAsync(Image image, string filePath);
     }
 }

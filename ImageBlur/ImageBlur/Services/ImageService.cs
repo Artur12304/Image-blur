@@ -1,7 +1,5 @@
-using AForge.Imaging.Filters;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 
 namespace ImageBlur.Services
 {
@@ -9,48 +7,38 @@ namespace ImageBlur.Services
     {
         public async Task<Image> LoadImageAsync(string filePath)
         {
-            using var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            return await Task.Run(() => Image.FromStream(stream));
+            return await Task.Run(() => Image.Load(filePath));
         }
 
         public async Task<Image> BlurImageAsync(Image image)
         {
-            var filter = new GaussianBlur(100, 100);
-            return await Task.Run(() => filter.Apply((Bitmap)image));
+            await Task.Run(() => image.Mutate(x => x.GaussianBlur(5)));
+            return image;
         }
 
         public async Task<Image> SharpenImageAsync(Image image)
         {
-            var filter = new Sharpen();
-            return await Task.Run(() => filter.Apply((Bitmap)image));
+            await Task.Run(() => image.Mutate(x => x.GaussianSharpen(3)));
+            return image;
         }
 
         public async Task<Image> ResizeImageAsync(Image image, Size size)
         {
-            var resizedImage = new Bitmap(size.Width, size.Height);
-            using (var graphics = Graphics.FromImage(resizedImage))
+            await Task.Run(() => image.Mutate(x => x.Resize(new ResizeOptions
             {
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.DrawImage(image, 0, 0, size.Width, size.Height);
-            }
-            return await Task.FromResult((Image)resizedImage);
+                Size = size,
+                Mode = ResizeMode.Stretch
+            })));
+            return image;
         }
 
-        public async Task SaveImageAsync(Image image, string filePath, ImageFormat format)
+        public async Task SaveImageAsync(Image image, string filePath)
         {
             // Generate new file name with prefix
             string newFileName = "New_" + Path.GetFileNameWithoutExtension(filePath) + Path.GetExtension(filePath);
             string newFilePath = Path.Combine(Path.GetDirectoryName(filePath), newFileName);
             // Save modified image with new file name
-            using (var stream = new FileStream(newFilePath, FileMode.Create))
-            {
-                Bitmap bmp = new Bitmap(image);
-                bmp.Save(stream, format);
-                //image.Save(stream, format);
-                await stream.FlushAsync();
-            }
+            await image.SaveAsync(newFilePath);
         }
     }
 }

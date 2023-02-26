@@ -1,7 +1,7 @@
 using ImageBlur.Facades;
 using Microsoft.AspNetCore.Mvc;
-using System.Drawing;
-using System.Drawing.Imaging;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Jpeg;
 
 namespace ImageBlur.Controllers
 {
@@ -22,7 +22,7 @@ namespace ImageBlur.Controllers
             try
             {
                 var image = await _imageProcessingFacade.LoadImageAsync(filePath);
-                await _imageProcessingFacade.SaveImageAsync(image, filePath, ImageFormat.Jpeg);
+                await _imageProcessingFacade.SaveImageAsync(image, filePath);
                 return Ok();
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace ImageBlur.Controllers
             {
                 var image = await _imageProcessingFacade.LoadImageAsync(filePath);
                 var resizedImage = await _imageProcessingFacade.ResizeImageAsync(image, new Size(width, height));
-                await _imageProcessingFacade.SaveImageAsync(resizedImage, filePath, ImageFormat.Jpeg);
+                await _imageProcessingFacade.SaveImageAsync(resizedImage, filePath);
                 return Ok();
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace ImageBlur.Controllers
         {
             using (var memoryStream = new MemoryStream())
             {
-                image.Save(memoryStream, ImageFormat.Png);
+                image.Save(memoryStream, new JpegEncoder());
                 return memoryStream.ToArray();
             }
         }
